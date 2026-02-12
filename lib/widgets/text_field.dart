@@ -65,7 +65,7 @@ class TextFieldCustom extends StatefulWidget {
 }
 
 class _TextFieldCustomState extends State<TextFieldCustom> {
-  bool _obscureText = true;
+  bool _obscureText = false;
 
   @override
   void initState() {
@@ -74,20 +74,32 @@ class _TextFieldCustomState extends State<TextFieldCustom> {
   }
 
   @override
+  void didUpdateWidget(covariant TextFieldCustom oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    if (oldWidget.obscureText != widget.obscureText) {
+      _obscureText = widget.obscureText;
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final bool isPasswordField = widget.obscureText == true;
+    final int effectiveMaxLines =
+    isPasswordField ? 1 : (widget.maxLines ?? 1);
     return TextFormField(
       scrollPhysics: widget.scroll,
       onTap: widget.onTap,
       enabled: widget.enable,
       validator: widget.validator,
-      minLines: widget.minLines ?? 1,
-      maxLines: widget.maxLines,
+      minLines: isPasswordField ? 1 : (widget.minLines ?? 1),
+      maxLines: effectiveMaxLines,
       style: Poppins(),
       cursorColor: black,
       autofocus: widget.autoFocus,
       focusNode: widget.focusNode,
       keyboardType: widget.keyboardType,
-      obscureText: _obscureText,
+      obscureText: isPasswordField ? _obscureText : false,
       readOnly: widget.readOnly,
       controller: widget.controller,
       onChanged: widget.onChanged,
@@ -95,25 +107,22 @@ class _TextFieldCustomState extends State<TextFieldCustom> {
         alignLabelWithHint: true,
         labelStyle: Poppins(color: grey),
         hintText: widget.hintText,
-        hintStyle: Poppins(
-          color: grey,
-          fontSize: 12,
-        ),
+        hintStyle: Poppins(color: grey, fontSize: 12),
         contentPadding: widget.contentPadding ?? EdgeInsets.only(left: 12),
         filled: widget.filled,
         fillColor: widget.fillColor,
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(50),
           borderSide:
-          widget.focusedBorderSide ?? BorderSide(color: transparentColor),
+              widget.focusedBorderSide ?? BorderSide(color: transparentColor),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(50),
           borderSide:
-          widget.enabledBorderSide ?? BorderSide(color: transparentColor),
+              widget.enabledBorderSide ?? BorderSide(color: transparentColor),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(50),
           borderSide: widget.errorBorderSide ?? BorderSide(color: red),
         ),
         border: OutlineInputBorder(
@@ -122,18 +131,14 @@ class _TextFieldCustomState extends State<TextFieldCustom> {
         ),
         prefixIcon: widget.prefixIcon,
         suffixIcon: widget.suffixIcon ??
-            (widget.obscureText
+            (isPasswordField
                 ? IconButton(
               icon: Icon(
-                size: 20,
                 _obscureText ? Icons.visibility_off : Icons.visibility,
-                color: green,
+                size: 20,
+                color: grey,
               ),
-              onPressed: () {
-                setState(() {
-                  _obscureText = !_obscureText;
-                });
-              },
+              onPressed: () => setState(() => _obscureText = !_obscureText),
             )
                 : null),
       ),
