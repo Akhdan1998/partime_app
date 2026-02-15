@@ -28,7 +28,7 @@ class FormData extends StatelessWidget {
                   borderRadius: BorderRadius.circular(50),
                   color: orange,
                 ),
-                child: Obx(() => Container(
+                child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
                     color: orange,
@@ -46,7 +46,7 @@ class FormData extends StatelessWidget {
                       ),
                     ),
                   ),
-                )),
+                ),
               )),
 
               _hGap20,
