@@ -7,14 +7,10 @@ class FormData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final title = controller.role == 'company'
-        ? 'About the Company'
-        : 'About Me';
-
     return Scaffold(
       backgroundColor: white,
       appBar: CusAppBar(
-        title: title,
+        title: controller.title,
         showBackButton: false,
         showMoreButton: false,
       ),
@@ -32,32 +28,25 @@ class FormData extends StatelessWidget {
                   borderRadius: BorderRadius.circular(50),
                   color: orange,
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    GestureDetector(
-                      onTap: () => controller.changeTab(0),
-                      child: _tabItem(
-                        'Recruitment Info',
-                        controller.selectedIndex.value == 0,
+                child: Obx(() => Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    color: orange,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: List.generate(
+                      controller.tabs.length,
+                          (index) => GestureDetector(
+                        onTap: () => controller.changeTab(index),
+                        child: _tabItem(
+                          controller.tabs[index],
+                          controller.selectedIndex.value == index,
+                        ),
                       ),
                     ),
-                    GestureDetector(
-                      onTap: () => controller.changeTab(1),
-                      child: _tabItem(
-                        'Job Details',
-                        controller.selectedIndex.value == 1,
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () => controller.changeTab(2),
-                      child: _tabItem(
-                        'Document',
-                        controller.selectedIndex.value == 2,
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                )),
               )),
 
               _hGap20,
@@ -67,13 +56,10 @@ class FormData extends StatelessWidget {
                 child: PageView(
                   controller: controller.pageController,
                   onPageChanged: controller.onPageChanged,
-                  children: const [
-                    RecruitmentInfo(),
-                    JobDetails(),
-                    DocumentCompany(),
-                  ],
+                  children: controller.pages,
                 ),
               ),
+
 
               _hGap20,
 

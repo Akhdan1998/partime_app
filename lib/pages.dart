@@ -61,3 +61,15 @@ part 'feature/form/steper/company/job_details/job_details_screen.dart';
 part 'feature/form/steper/company/document/document_company_controller.dart';
 
 part 'feature/form/steper/company/document/document_company_screen.dart';
+
+part 'feature/form/steper/candidate/personal_data/personal_data_controller.dart';
+
+part 'feature/form/steper/candidate/personal_data/personal_data_screen.dart';
+
+part 'feature/form/steper/candidate/experience/experience_controller.dart';
+
+part 'feature/form/steper/candidate/experience/experience_screen.dart';
+
+part 'feature/form/steper/candidate/document/document_candidate_controller.dart';
+
+part 'feature/form/steper/candidate/document/document_candidate_screen.dart';

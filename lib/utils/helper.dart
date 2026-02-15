@@ -159,3 +159,112 @@ class LabeledTextField extends StatelessWidget {
     );
   }
 }
+
+class EmploymentPolicy {
+  final String id;
+  final String employmentPolicy;
+
+  EmploymentPolicy({required this.id, required this.employmentPolicy});
+}
+
+class MinimumEducation {
+  final String id;
+  final String minEducation;
+
+  MinimumEducation({required this.id, required this.minEducation});
+}
+
+class Gender {
+  final String id;
+  final String gender;
+
+  Gender({required this.id, required this.gender});
+}
+
+class JobCategory {
+  final String id;
+  final String name;
+
+  JobCategory({required this.id, required this.name});
+}
+
+class JobField {
+  final String id;
+  final String categoryId;
+  final String name;
+
+  JobField({required this.id, required this.categoryId, required this.name});
+}
+
+class _LabelValue extends StatefulWidget {
+  const _LabelValue({required this.value});
+
+  final String value;
+
+  @override
+  State<_LabelValue> createState() => _LabelValueState();
+}
+
+class _LabelValueState extends State<_LabelValue> {
+    bool selected = false;
+  @override
+  Widget build(BuildContext context) {
+    return ButtonCustom(
+      onPressed: () {
+        setState(() {
+          selected = !selected;
+        });
+      },
+      child: Container(
+        color: transparentColor,
+        width: 165,
+        height: 25,
+        child: Row(
+          children: [
+            Container(
+              height: 15,
+              width: 15,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                border: Border.all(width: 1.2, color: grey),
+                color: selected ? orange : white,
+              ),
+            ),
+            _wGap15,
+            Text(
+              widget.value,
+              style: Poppins(color: black, fontSize: 13),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _TwoCol extends StatelessWidget {
+  const _TwoCol({
+    required this.left,
+    required this.right,
+    this.padding = EdgeInsets.zero,
+  });
+
+  final List<Widget> left;
+  final List<Widget> right;
+  final EdgeInsetsGeometry padding;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: padding,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Column(crossAxisAlignment: CrossAxisAlignment.start, children: left),
+          Column(crossAxisAlignment: CrossAxisAlignment.start, children: right),
+        ],
+      ),
+    );
+  }
+}

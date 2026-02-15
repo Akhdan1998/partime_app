@@ -1,6 +1,6 @@
 part of '../../../../../pages.dart';
 
-class FormDataController extends GetxController {
+class RecruitmentInfoController extends GetxController {
   late final String role;
   late final PageController pageController;
 

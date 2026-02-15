@@ -95,7 +95,7 @@ class _TextFieldCustomState extends State<TextFieldCustom> {
       minLines: isPasswordField ? 1 : (widget.minLines ?? 1),
       maxLines: effectiveMaxLines,
       style: Poppins(),
-      cursorColor: black,
+      cursorColor: orange,
       autofocus: widget.autoFocus,
       focusNode: widget.focusNode,
       keyboardType: widget.keyboardType,
