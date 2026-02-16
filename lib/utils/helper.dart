@@ -217,9 +217,10 @@ class _LabelValueState extends State<_LabelValue> {
       },
       child: Container(
         color: transparentColor,
-        width: 165,
-        height: 25,
+        width: 170,
+        height: 40,
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
               height: 15,
@@ -231,9 +232,12 @@ class _LabelValueState extends State<_LabelValue> {
               ),
             ),
             _wGap15,
-            Text(
-              widget.value,
-              style: Poppins(color: black, fontSize: 13),
+            SizedBox(
+              width: 140,
+              child: Text(
+                widget.value,
+                style: Poppins(color: black, fontSize: 13), maxLines: 2,
+              ),
             ),
           ],
         ),

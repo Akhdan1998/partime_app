@@ -1,39 +1,30 @@
 part of '../../pages.dart';
-class FormDataController extends GetxController {
-  final role = 'company';
 
+class FormDataController extends GetxController {
+  // final role = 'company';
+  late final String role;
   final selectedIndex = 0.obs;
   final pageController = PageController();
 
+  @override
+  void onInit() {
+    role = Get.arguments ?? 'company';
+    super.onInit();
+  }
+
   List<Widget> get pages {
     if (role == 'company') {
-      return [
-        RecruitmentInfo(),
-        JobDetails(),
-        DocumentCompany(),
-      ];
+      return [RecruitmentInfo(), JobDetails(), DocumentCompany()];
     } else {
-      return [
-        PersonalData(),
-        Experience(),
-        DocumentCandidate(),
-      ];
+      return [PersonalData(), Experience(), DocumentCandidate()];
     }
   }
 
   List<String> get tabs {
     if (role == 'company') {
-      return [
-        'Recruitment Info',
-        'Job Details',
-        'Document',
-      ];
+      return ['Recruitment Info', 'Job Details', 'Document'];
     } else {
-      return [
-        'Personal Data',
-        'Experience',
-        'Document',
-      ];
+      return ['Personal Data', 'Experience', 'Document'];
     }
   }
 
@@ -46,6 +37,5 @@ class FormDataController extends GetxController {
     selectedIndex.value = index;
   }
 
-  String get title =>
-      role == 'company' ? 'About the Company' : 'About Me';
+  String get title => role == 'company' ? 'About the Company' : 'About Me';
 }
