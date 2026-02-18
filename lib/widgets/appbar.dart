@@ -74,7 +74,7 @@ class CusAppBar extends StatelessWidget implements PreferredSizeWidget {
       automaticallyImplyLeading: false,
       titleSpacing: 0,
       title: Container(
-        height: 50,
+        height: 55,
         margin: EdgeInsets.only(left: 20, right: 20),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),

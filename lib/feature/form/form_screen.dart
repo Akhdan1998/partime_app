@@ -22,32 +22,34 @@ class FormData extends StatelessWidget {
               _hGap20,
 
               // TABS
-              Obx(() => Container(
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  color: orange,
-                ),
-                child: Container(
+              Obx(
+                () => Container(
+                  padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
                     color: orange,
                   ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: List.generate(
-                      controller.tabs.length,
-                          (index) => GestureDetector(
-                        onTap: () => controller.changeTab(index),
-                        child: _tabItem(
-                          controller.tabs[index],
-                          controller.selectedIndex.value == index,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      color: orange,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: List.generate(
+                        controller.tabs.length,
+                        (index) => GestureDetector(
+                          onTap: () => controller.changeTab(index),
+                          child: _tabItem(
+                            controller.tabs[index],
+                            controller.selectedIndex.value == index,
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
-              )),
+              ),
 
               _hGap20,
 
@@ -60,31 +62,39 @@ class FormData extends StatelessWidget {
                 ),
               ),
 
-
               _hGap20,
 
               // BOTTOM BUTTONS
-              Row(
-                children: [
-                  Expanded(
-                    child: ButtonCustom(
-                      onPressed: () {
-                        debugPrint('LETER ${controller.role}');
-                      },
-                      child: _bottomButton('Leter'),
+              Obx(() {
+                final isFirst = controller.selectedIndex.value == 0;
+                final isLast =
+                    controller.selectedIndex.value ==
+                    controller.pages.length - 1;
+
+                return Row(
+                  children: [
+                    Expanded(
+                      child: ButtonCustom(
+                        onPressed: isFirst
+                            ? () {
+                                debugPrint('LETER');
+                              }
+                            : controller.previousPage,
+                        child: _bottomButton(isFirst ? 'Leter' : 'Back'),
+                      ),
                     ),
-                  ),
-                  _wGap20,
-                  Expanded(
-                    child: ButtonCustom(
-                      onPressed: () {
-                        debugPrint('NEXT ${controller.role}');
-                      },
-                      child: _bottomButton('Next'),
+                    _wGap20,
+                    Expanded(
+                      child: ButtonCustom(
+                        onPressed: isLast
+                            ? controller.simpan
+                            : controller.nextPage,
+                        child: _bottomButton('Next'),
+                      ),
                     ),
-                  ),
-                ],
-              ),
+                  ],
+                );
+              }),
             ],
           ),
         ),
@@ -121,11 +131,7 @@ class FormData extends StatelessWidget {
       ),
       child: Text(
         text,
-        style: Poppins(
-          fontSize: 13,
-          color: white,
-          fontWeight: FontWeight.w600,
-        ),
+        style: Poppins(fontSize: 13, color: white, fontWeight: FontWeight.w600),
       ),
     );
   }

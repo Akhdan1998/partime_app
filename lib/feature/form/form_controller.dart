@@ -1,7 +1,6 @@
 part of '../../pages.dart';
 
 class FormDataController extends GetxController {
-  // final role = 'company';
   late final String role;
   final selectedIndex = 0.obs;
   final pageController = PageController();
@@ -30,11 +29,43 @@ class FormDataController extends GetxController {
 
   void changeTab(int index) {
     selectedIndex.value = index;
-    pageController.jumpToPage(index);
+    pageController.animateToPage(
+      index,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.ease,
+    );
   }
 
   void onPageChanged(int index) {
     selectedIndex.value = index;
+  }
+
+  // ===== BOTTOM BUTTON LOGIC =====
+
+  void nextPage() {
+    if (selectedIndex.value < pages.length - 1) {
+      pageController.nextPage(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.ease,
+      );
+    }
+  }
+
+  void previousPage() {
+    if (selectedIndex.value > 0) {
+      pageController.previousPage(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.ease,
+      );
+    }
+  }
+
+  void simpan() {
+    debugPrint('SUBMIT DATA role=$role');
+    Get.to(
+      ReviewForm(),
+      arguments: role,
+    );
   }
 
   String get title => role == 'company' ? 'About the Company' : 'About Me';

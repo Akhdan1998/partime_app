@@ -160,6 +160,13 @@ class LabeledTextField extends StatelessWidget {
   }
 }
 
+class CurrentSituation {
+  final String id;
+  final String currentSituation;
+
+  CurrentSituation({required this.id, required this.currentSituation});
+}
+
 class EmploymentPolicy {
   final String id;
   final String employmentPolicy;
@@ -206,7 +213,8 @@ class _LabelValue extends StatefulWidget {
 }
 
 class _LabelValueState extends State<_LabelValue> {
-    bool selected = false;
+  bool selected = false;
+
   @override
   Widget build(BuildContext context) {
     return ButtonCustom(
@@ -236,11 +244,40 @@ class _LabelValueState extends State<_LabelValue> {
               width: 140,
               child: Text(
                 widget.value,
-                style: Poppins(color: black, fontSize: 13), maxLines: 2,
+                style: Poppins(color: black, fontSize: 13),
+                maxLines: 2,
               ),
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _LabelText extends StatelessWidget {
+  const _LabelText({required this.label, required this.value});
+
+  final String label;
+  final String value;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 165,
+      height: 77,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(label, style: Poppins(color: black, fontSize: 13)),
+          _hGap10,
+          Text(
+            value,
+            style: Poppins(color: orange),
+            overflow: TextOverflow.ellipsis,
+            maxLines: 4,
+          ),
+        ],
       ),
     );
   }
@@ -273,10 +310,150 @@ class _TwoCol extends StatelessWidget {
   }
 }
 
+class _SectionHeader extends StatelessWidget {
+  const _SectionHeader({required this.title});
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      color: grey.withOpacity(0.4),
+      padding: const EdgeInsets.only(left: 20, top: 10, bottom: 10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            title,
+            style: Poppins(
+              color: black,
+              fontSize: 13,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          GestureDetector(
+            onTap: () {},
+            child: Container(
+              padding: EdgeInsets.only(right: 20),
+              color: transparentColor,
+              child: Icon(Icons.edit, color: black, size: 17),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 String formatDateTime(DateTime dt) {
   return '${dt.day.toString().padLeft(2, '0')}/'
       '${dt.month.toString().padLeft(2, '0')}/'
       '${dt.year} '
       '${dt.hour.toString().padLeft(2, '0')}:'
       '${dt.minute.toString().padLeft(2, '0')}';
+}
+
+class DocumentItem extends StatelessWidget {
+  final String title;
+  final String fileName;
+  final String addedText;
+
+  const DocumentItem({
+    super.key,
+    required this.title,
+    required this.fileName,
+    required this.addedText,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(title, style: Poppins(color: black, fontSize: 13)),
+        _hGap10,
+        DashedBorderContainer(
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Row(
+              children: [
+                const Icon(Icons.file_open_rounded),
+                _wGap20,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(fileName, style: Poppins(color: black)),
+                    Text(
+                      addedText,
+                      style: Poppins(color: orange, fontSize: 13),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class DashedBorderContainer extends StatelessWidget {
+  final Widget child;
+
+  const DashedBorderContainer({super.key, required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomPaint(
+      painter: DashedBorderPainter(color: orange, radius: 10),
+      child: Container(
+        decoration: BoxDecoration(
+          color: orange.withOpacity(0.2),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: child,
+      ),
+    );
+  }
+}
+
+class DashedBorderPainter extends CustomPainter {
+  final Color color;
+  final double radius;
+
+  DashedBorderPainter({required this.color, this.radius = 8});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = color
+      ..strokeWidth = 1.2
+      ..style = PaintingStyle.stroke;
+
+    final path = Path()
+      ..addRRect(
+        RRect.fromRectAndRadius(
+          Rect.fromLTWH(0, 0, size.width, size.height),
+          Radius.circular(radius),
+        ),
+      );
+
+    const dashWidth = 6.0;
+    const dashSpace = 4.0;
+    double distance = 0.0;
+
+    for (final metric in path.computeMetrics()) {
+      while (distance < metric.length) {
+        final extractPath = metric.extractPath(distance, distance + dashWidth);
+        canvas.drawPath(extractPath, paint);
+        distance += dashWidth + dashSpace;
+      }
+      distance = 0;
+    }
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
 }

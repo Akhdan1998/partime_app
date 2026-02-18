@@ -35,6 +35,6 @@ class DocumentCompanyController extends GetxController {
     }
 
     target.value = file;
-    timeTarget.value = DateTime.now(); // simpan waktu upload
+    timeTarget.value = DateTime.now();
   }
 }

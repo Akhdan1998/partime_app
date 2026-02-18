@@ -24,7 +24,7 @@ class _JobDetailsState extends State<JobDetails> {
               dividerColor: grey,
               title:
                   controller.selectedCategory.value?.name ??
-                  "Kategori Pekerjaan",
+                  "Job Category",
               titleAlignment: Alignment.centerLeft,
               fontSize: 12,
               items: controller.jobCategories,
@@ -68,7 +68,7 @@ class _JobDetailsState extends State<JobDetails> {
               borderColor: grey,
               dividerColor: grey,
               title:
-                  controller.selectedJobField.value?.name ?? "Bidang Pekerjaan",
+                  controller.selectedJobField.value?.name ?? "Field of work",
               titleAlignment: Alignment.centerLeft,
               fontSize: 12,
               items: controller.filteredFields,
@@ -378,7 +378,7 @@ class _JobDetailsState extends State<JobDetails> {
           _hGap20,
           Text(
             'Select the assets you own to support your work. (Optional)',
-            style: Poppins(fontWeight: FontWeight.w500, fontSize: 13),
+            style: Poppins(fontWeight: FontWeight.w500, fontSize: 13,),
           ),
           _hGap10,
           _TwoCol(

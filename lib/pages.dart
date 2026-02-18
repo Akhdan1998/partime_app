@@ -73,3 +73,11 @@ part 'feature/form/steper/candidate/experience/experience_screen.dart';
 part 'feature/form/steper/candidate/document/document_candidate_controller.dart';
 
 part 'feature/form/steper/candidate/document/document_candidate_screen.dart';
+
+part 'feature/form/steper/candidate/experience/work_experience/work_experience_controller.dart';
+
+part 'feature/form/steper/candidate/experience/work_experience/work_experience_screen.dart';
+
+part 'feature/review_form/review_form_controller.dart';
+
+part 'feature/review_form/review_form_screen.dart';
