@@ -25,18 +25,16 @@ class ReviewForm extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: ButtonCustom(
-        onPressed: controller.role == 'company'
-            ? () {
-          debugPrint('SUBMIT COMPANY');
-        } : () {
-          debugPrint('SUBMIT CANDIDATE');},
+        onPressed: () {
+          Get.to(() => Navigation(), arguments: controller.role);
+        },
         child: Container(
           alignment: Alignment.center,
           height: 45,
           margin: const EdgeInsets.only(
             left: 20,
             right: 20,
-            bottom: 30,
+            bottom: 20,
             top: 10,
           ),
           decoration: BoxDecoration(
@@ -86,7 +84,7 @@ class ReviewForm extends StatelessWidget {
       children: [
         _buildIntro(),
         _hGap20,
-        _SectionHeader(title: 'Company Information'),
+        _SectionHeader(title: 'Company Information', index: 0),
         Padding(
           padding: _horizontalPadding,
           child: _TwoCol(
@@ -115,7 +113,7 @@ class ReviewForm extends StatelessWidget {
             ],
           ),
         ),
-        _SectionHeader(title: 'Job Details'),
+        _SectionHeader(title: 'Job Details', index: 1),
         Padding(
           padding: _horizontalPadding,
           child: _TwoCol(
@@ -140,7 +138,7 @@ class ReviewForm extends StatelessWidget {
             ],
           ),
         ),
-        _SectionHeader(title: 'Document'),
+        _SectionHeader(title: 'Document', index: 2),
         const Padding(
           padding: EdgeInsets.fromLTRB(20, 20, 20, 10),
           child: Column(
@@ -171,7 +169,7 @@ class ReviewForm extends StatelessWidget {
       children: [
         _buildIntro(),
         _hGap20,
-        _SectionHeader(title: 'Personal Data Information'),
+        _SectionHeader(title: 'Personal Data Information', index: 0),
         Padding(
           padding: _horizontalPadding,
           child: Column(
@@ -218,7 +216,7 @@ class ReviewForm extends StatelessWidget {
             ],
           ),
         ),
-        _SectionHeader(title: 'Experience'),
+        _SectionHeader(title: 'Experience', index: 1),
         Padding(
           padding: _horizontalPadding,
           child: Column(
@@ -240,8 +238,8 @@ class ReviewForm extends StatelessWidget {
             ],
           ),
         ),
-        _SectionHeader(title: 'Document'),
-        const Padding(
+        _SectionHeader(title: 'Document', index: 2),
+        Padding(
           padding: EdgeInsets.fromLTRB(20, 20, 20, 10),
           child: Column(
             children: [

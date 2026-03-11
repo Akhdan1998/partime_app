@@ -15,3 +15,11 @@ Widget _buildDivider(
     endIndent: endIndent ?? 0.0,
   );
 }
+
+Widget _vDivider({Color? color,}) {
+  return Container(
+    height: 35,
+    width: 1,
+    color: color ?? (black),
+  );
+}

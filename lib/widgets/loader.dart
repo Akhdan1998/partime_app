@@ -26,7 +26,7 @@ class OrbitDotsLoader extends StatelessWidget {
       child: AnimatedBuilder(
         animation: controller,
         builder: (_, __) {
-          final t = controller.value; // 0..1
+          final t = controller.value;
           return Stack(
             children: List.generate(dots, (i) {
               final angle = (2 * math.pi * i / dots) + (2 * math.pi * t);
@@ -34,7 +34,7 @@ class OrbitDotsLoader extends StatelessWidget {
               final dy = radius * math.sin(angle);
 
               final phase = (i / dots + t) % 1.0;
-              final scale = 0.55 + 0.6 * (1 - phase); // 0.55..1.15
+              final scale = 0.55 + 0.6 * (1 - phase);
 
               final opacity = (0.25 + 0.75 * (1 - phase)).clamp(0.0, 1.0);
 

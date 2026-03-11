@@ -194,7 +194,13 @@ class _WorkExperienceState extends State<WorkExperience> {
                   controller: controller.description,
                 ),
                 _hGap20,
-                _LabelValue(value: 'This is an Internship Experience'),
+                Obx(() => CusCheckbox(
+                  value: controller.isChecked.value,
+                  label: "This is an Internship Experience",
+                  onChanged: (val) {
+                    controller.isChecked.value = val;
+                  },
+                )),
                 _hGap20,
               ],
             ),

@@ -238,7 +238,7 @@ class _SignupState extends State<Signup> {
                       LabeledTextField(
                         label: 'Company Name',
                         hintText: 'Company Name',
-                        controller: controller.company_name,
+                        controller: controller.companyName,
                         validator: (v) => (v == null || v.isEmpty)
                             ? 'Company Name cannot be empty'
                             : null,

@@ -1,11 +1,7 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.ptmon_app">
+<manifest xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Permission untuk Android 12 ke bawah -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-
-    <!-- Permission untuk Android 13+ (API 33+) -->
-    <uses-permission android:name="android.permission.READ_MEDIA_DOCUMENTS"/>
 
     <application
         android:label="ptmon_app"
@@ -20,7 +16,8 @@
             android:theme="@style/LaunchTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustResize"
+            tools:targetApi="11">
 
             <meta-data
                 android:name="io.flutter.embedding.android.NormalTheme"
@@ -38,7 +35,6 @@
             android:value="2" />
     </application>
 
-    <!-- Required by Flutter engine -->
     <queries>
         <intent>
             <action android:name="android.intent.action.PROCESS_TEXT"/>

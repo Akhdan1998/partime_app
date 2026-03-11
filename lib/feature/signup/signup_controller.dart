@@ -5,7 +5,7 @@ class SignupController extends GetxController {
 
   final selectedItem = Rxn<Map<String, String>>();
 
-  final company_name = TextEditingController();
+  final companyName = TextEditingController();
 
   final isCompany = false.obs;
 
@@ -18,7 +18,7 @@ class SignupController extends GetxController {
     isCompany.value = (id == '1');
 
     if (!isCompany.value) {
-      company_name.clear();
+      companyName.clear();
     }
 
     debugPrint(
@@ -34,7 +34,7 @@ class SignupController extends GetxController {
 
   @override
   void onClose() {
-    company_name.dispose();
+    companyName.dispose();
     super.onClose();
   }
 }

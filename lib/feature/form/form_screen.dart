@@ -15,11 +15,11 @@ class FormData extends StatelessWidget {
         showMoreButton: false,
       ),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Container(
+          padding: const EdgeInsets.only(left: 20, right: 20),
           child: Column(
             children: [
-              _hGap20,
+              _hGap10,
 
               // TABS
               Obx(
@@ -38,12 +38,9 @@ class FormData extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: List.generate(
                         controller.tabs.length,
-                        (index) => GestureDetector(
-                          onTap: () => controller.changeTab(index),
-                          child: _tabItem(
-                            controller.tabs[index],
-                            controller.selectedIndex.value == index,
-                          ),
+                        (index) => _tabItem(
+                          controller.tabs[index],
+                          controller.selectedIndex.value == index,
                         ),
                       ),
                     ),
@@ -51,7 +48,7 @@ class FormData extends StatelessWidget {
                 ),
               ),
 
-              _hGap20,
+              _hGap10,
 
               // PAGEVIEW
               Expanded(
@@ -62,7 +59,6 @@ class FormData extends StatelessWidget {
                 ),
               ),
 
-              _hGap20,
 
               // BOTTOM BUTTONS
               Obx(() {
@@ -107,7 +103,7 @@ class FormData extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(50),
-        color: isActive ? Colors.transparent : white,
+        color: isActive ? transparentColor : white,
       ),
       alignment: Alignment.center,
       child: Text(
@@ -124,6 +120,7 @@ class FormData extends StatelessWidget {
   Widget _bottomButton(String text) {
     return Container(
       alignment: Alignment.center,
+      margin: const EdgeInsets.only(top: 10),
       height: 45,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(50),
@@ -131,7 +128,7 @@ class FormData extends StatelessWidget {
       ),
       child: Text(
         text,
-        style: Poppins(fontSize: 13, color: white, fontWeight: FontWeight.w600),
+        style: Poppins(fontSize: 13, color: white, fontWeight: FontWeight.w600,),
       ),
     );
   }

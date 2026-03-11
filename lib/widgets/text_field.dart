@@ -11,6 +11,7 @@ class TextFieldCustom extends StatefulWidget {
   final FocusNode? focusNode;
   final double borderRadius;
   final Color fillColor;
+  final Color hintColor;
   final bool filled;
   final void Function(String)? onChanged;
   final TextInputType keyboardType;
@@ -41,6 +42,7 @@ class TextFieldCustom extends StatefulWidget {
     this.focusNode,
     this.borderRadius = 10.0,
     this.fillColor = Colors.white,
+    this.hintColor = Colors.white,
     this.filled = true,
     this.onChanged,
     this.keyboardType = TextInputType.emailAddress,
@@ -107,7 +109,7 @@ class _TextFieldCustomState extends State<TextFieldCustom> {
         alignLabelWithHint: true,
         labelStyle: Poppins(color: grey),
         hintText: widget.hintText,
-        hintStyle: Poppins(color: grey, fontSize: 12),
+        hintStyle: Poppins(color: widget.hintColor, fontSize: 12),
         contentPadding: widget.contentPadding ?? EdgeInsets.only(left: 12),
         filled: widget.filled,
         fillColor: widget.fillColor,

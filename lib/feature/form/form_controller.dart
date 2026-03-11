@@ -60,12 +60,12 @@ class FormDataController extends GetxController {
     }
   }
 
-  void simpan() {
-    debugPrint('SUBMIT DATA role=$role');
-    Get.to(
-      ReviewForm(),
-      arguments: role,
-    );
+  void simpan() async {
+    final result = await Get.to(ReviewForm(), arguments: role);
+
+    if (result != null) {
+      changeTab(result);
+    }
   }
 
   String get title => role == 'company' ? 'About the Company' : 'About Me';

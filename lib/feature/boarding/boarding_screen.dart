@@ -37,11 +37,10 @@ class Boarding extends StatelessWidget {
               left: 0,
               right: 0,
               bottom: 0,
-              child: ClipPath(
-                clipper: CurvedTopClipper(),
+              child: TopCurveContainer(
+                height: 430,
                 child: Container(
                   width: double.infinity,
-                  height: 430,
                   padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                   color: white,
                   child: Column(

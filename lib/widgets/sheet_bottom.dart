@@ -17,14 +17,21 @@ Future<void> showReusableBottomSheet({
     enableDrag: true,
     backgroundColor: white,
     builder: (context) {
-      return SingleChildScrollView(
-        padding: EdgeInsets.only(
-          bottom: MediaQuery.of(context).viewInsets.bottom,
-        ),
-        child: Container(
-          // padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-          padding: const EdgeInsets.only(left: 20, top: 20, right: 20),
-          child: child,
+      final height = MediaQuery.of(context).size.height;
+      return SafeArea(
+        top: false,
+        bottom: false,
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxHeight: height * 0.90),
+          child: SingleChildScrollView(
+            padding: EdgeInsets.only(
+              bottom: MediaQuery.of(context).viewInsets.bottom,
+            ),
+            child: Container(
+              padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
+              child: child,
+            ),
+          ),
         ),
       );
     },

@@ -1,9 +1,6 @@
 part of '../../../../../../pages.dart';
 
 class WorkExperienceController extends GetxController {
-  /// =========================
-  /// GLOBAL JOB CATEGORIES
-  /// =========================
   final jobCategories = <JobCategory>[
     JobCategory(id: '1', name: 'Teknologi & IT'),
     JobCategory(id: '2', name: 'Bisnis & Manajemen'),
@@ -37,9 +34,6 @@ class WorkExperienceController extends GetxController {
     JobCategory(id: '30', name: 'Game, Esports & Streaming'),
   ].obs;
 
-  /// =========================
-  /// GLOBAL JOB FIELDS
-  /// =========================
   final jobFields = <JobField>[
     /// Teknologi & IT
     JobField(id: '1', categoryId: '1', name: 'Software Engineer'),
@@ -121,6 +115,8 @@ class WorkExperienceController extends GetxController {
   final TextEditingController startDate = TextEditingController();
   final TextEditingController completionDate = TextEditingController();
   final TextEditingController description = TextEditingController();
+  final RxBool isChecked = false.obs;
+
   List<JobField> get filteredFields {
     if (selectedCategory.value == null) return [];
     return jobFields
