@@ -1,7 +1,8 @@
 part of '../../pages.dart';
 
 class Boarding extends StatelessWidget {
-  const Boarding({super.key});
+   Boarding({super.key});
+  final BoardingController controller = Get.put(BoardingController());
 
   @override
   Widget build(BuildContext context) {

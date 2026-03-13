@@ -12,16 +12,16 @@ class _VacancyState extends State<Vacancy> {
 
   @override
   Widget build(BuildContext context) {
-    final String role = (Get.arguments as String?) ?? 'company';
-
     return Scaffold(
       backgroundColor: white,
       body: SafeArea(
         top: false,
         bottom: false,
-        child: role == 'company'
-            ? const _CompanyHome()
-            : const _CandidateHome(),
+        child: Obx(
+          () => controller.isCompany
+              ? const _CompanyHome()
+              : const _CandidateHome(),
+        ),
       ),
     );
   }
@@ -208,7 +208,9 @@ class _CandidateHome extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ButtonCustom(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(VacancyDetail());
+                      },
                       child: Container(
                         height: 80,
                         width: 80,
@@ -284,15 +286,8 @@ class _TopMenuCard extends StatelessWidget {
             Container(
               height: 38,
               width: 38,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: orange,
-              ),
-              child: Icon(
-                data.icon,
-                color: white,
-                size: 20,
-              ),
+              decoration: BoxDecoration(shape: BoxShape.circle, color: orange),
+              child: Icon(data.icon, color: white, size: 20),
             ),
             _hGap10,
             Text(
@@ -300,10 +295,7 @@ class _TopMenuCard extends StatelessWidget {
               textAlign: TextAlign.center,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
-              style: Poppins(
-                fontWeight: FontWeight.w500,
-                fontSize: 11.5,
-              ),
+              style: Poppins(fontWeight: FontWeight.w500, fontSize: 11.5),
             ),
           ],
         ),
@@ -311,6 +303,7 @@ class _TopMenuCard extends StatelessWidget {
     );
   }
 }
+
 class _JobCard extends StatelessWidget {
   final String title;
   final String price;
@@ -335,7 +328,9 @@ class _JobCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ButtonCustom(
-      onPressed: () {},
+      onPressed: () {
+        Get.to(VacancyDetail());
+      },
       child: Container(
         color: transparentColor,
         child: Column(

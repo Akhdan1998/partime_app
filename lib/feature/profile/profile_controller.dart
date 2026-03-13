@@ -11,17 +11,17 @@ class ProfileController extends GetxController {
 
   ProfileData get profileData => isCompany
       ? ProfileData(
-          name: 'Pendekar Gendut',
-          email: 'pendekargendut@gmail.com',
+          name: 'PT. Kolink Network Solutions',
+          email: 'develop@kolink.net',
           stats: [
-            ProfileStat(value: '203', label: 'Proposed', color: orange),
-            ProfileStat(value: '10', label: 'Saved', color: green),
-            ProfileStat(value: '90', label: 'Processed', color: blue),
-            ProfileStat(value: '105', label: 'Rejected', color: red),
+            ProfileStat(value: '193', label: 'Rejected', color: orange),
+            ProfileStat(value: '76', label: 'Invited', color: green),
+            ProfileStat(value: '54', label: 'Reviewed', color: blue),
+            ProfileStat(value: '345', label: 'Expired', color: red),
           ],
           menus: [
             ProfileMenuData(
-              title: 'My Profile',
+              title: 'My Company',
               subtitle: 'Manage personal data in an agile and seamless way.',
               onTap: () {},
             ),
@@ -38,17 +38,17 @@ class ProfileController extends GetxController {
           ],
         )
       : ProfileData(
-          name: 'PT. Kolink Network Solutions',
-          email: 'develop@kolink.net',
+          name: 'Pendekar Gendut',
+          email: 'pendekargendut@gmail.com',
           stats: [
-            ProfileStat(value: '193', label: 'Rejected', color: orange),
-            ProfileStat(value: '76', label: 'Invited', color: green),
-            ProfileStat(value: '54', label: 'Reviewed', color: blue),
-            ProfileStat(value: '345', label: 'Expired', color: red),
+            ProfileStat(value: '203', label: 'Proposed', color: orange),
+            ProfileStat(value: '10', label: 'Saved', color: green),
+            ProfileStat(value: '90', label: 'Processed', color: blue),
+            ProfileStat(value: '105', label: 'Rejected', color: red),
           ],
           menus: [
             ProfileMenuData(
-              title: 'My Company',
+              title: 'My Profile',
               subtitle: 'Manage personal data in an agile and seamless way.',
               onTap: () {},
             ),
@@ -76,7 +76,7 @@ class ProfileController extends GetxController {
   }
 }
 
-class ProfileData {
+ class ProfileData {
   final String name;
   final String email;
   final List<ProfileStat> stats;

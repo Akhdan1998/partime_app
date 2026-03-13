@@ -137,3 +137,6 @@ part 'feature/profile/profile_screen.dart';
 part 'feature/vacancy/sort/sort_controller.dart';
 
 part 'feature/vacancy/sort/sort_screen.dart';
+
+part 'feature/vacancy_detail/vacancy_detail_controller.dart';
+part 'feature/vacancy_detail/vacancy_detail_screen.dart';

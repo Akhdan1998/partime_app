@@ -1,7 +1,6 @@
 part of '../../pages.dart';
 
-class VacancyController extends GetxController {
-  final selectedIndex = 0.obs;
+class VacancyDetailController extends GetxController {
   final role = 'company'.obs;
 
   @override
@@ -11,8 +10,4 @@ class VacancyController extends GetxController {
   }
 
   bool get isCompany => role.value == 'company';
-
-  void changeBottomNav(int index) {
-    selectedIndex.value = index;
-  }
 }
