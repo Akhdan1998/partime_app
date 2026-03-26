@@ -19,8 +19,8 @@ class _VacancyState extends State<Vacancy> {
         bottom: false,
         child: Obx(
           () => controller.isCompany
-              ? const _CompanyHome()
-              : const _CandidateHome(),
+              ? const _CandidateHome()
+              : const _CompanyHome(),
         ),
       ),
     );
@@ -209,7 +209,13 @@ class _CandidateHome extends StatelessWidget {
                   children: [
                     ButtonCustom(
                       onPressed: () {
-                        Get.to(VacancyDetail());
+                        Get.to(
+                              () => const VacancyDetail(),
+                          arguments: {
+                            'role': 'candidate',
+                            'view': 'candidate',
+                          },
+                        );
                       },
                       child: Container(
                         height: 80,
@@ -329,7 +335,13 @@ class _JobCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return ButtonCustom(
       onPressed: () {
-        Get.to(VacancyDetail());
+        Get.to(
+              () => const VacancyDetail(),
+          arguments: {
+            'role': 'company',
+            'view': 'company',
+          },
+        );
       },
       child: Container(
         color: transparentColor,

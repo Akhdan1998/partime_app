@@ -70,6 +70,7 @@ class CusAppBar extends StatelessWidget implements PreferredSizeWidget {
 
     return AppBar(
       backgroundColor: white,
+      surfaceTintColor: white,
       elevation: 0,
       automaticallyImplyLeading: false,
       titleSpacing: 0,

@@ -52,12 +52,12 @@ class _HistoryState extends State<History> {
                 fillColor: white.withOpacity(0.2),
                 hintText: 'Search',
                 hintColor: grey,
-                enabledBorderSide:  BorderSide(width: 1.2, color: orange),
-                focusedBorderSide:  BorderSide(width: 1.2, color: orange),
-                borderSide:  BorderSide(width: 1.2, color: orange),
-                errorBorderSide:  BorderSide(width: 1.2, color: red),
-                suffixIcon:  Icon(Icons.sort, color: black),
-                prefixIcon:  Icon(Icons.search, color: black),
+                enabledBorderSide: BorderSide(width: 1.2, color: orange),
+                focusedBorderSide: BorderSide(width: 1.2, color: orange),
+                borderSide: BorderSide(width: 1.2, color: orange),
+                errorBorderSide: BorderSide(width: 1.2, color: red),
+                suffixIcon: Icon(Icons.sort, color: black),
+                prefixIcon: Icon(Icons.search, color: black),
               ),
               _hGap20,
               Expanded(
@@ -106,10 +106,7 @@ class _HistoryState extends State<History> {
 }
 
 class _HistoryItem extends StatelessWidget {
-  const _HistoryItem({
-    required this.item,
-    required this.isCompany,
-  });
+  const _HistoryItem({required this.item, required this.isCompany});
 
   final HistoryItemData item;
   final bool isCompany;
@@ -117,7 +114,12 @@ class _HistoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ButtonCustom(
-      onPressed: () {},
+      onPressed: () {
+        Get.to(
+              () => const VacancyDetail(),
+          arguments: isCompany ? 'company' : 'candidate',
+        );
+      },
       child: Container(
         color: transparentColor,
         child: Row(
@@ -158,10 +160,7 @@ class _HistoryItem extends StatelessWidget {
                         ),
                       ),
                       _wGap10,
-                      _StatusBadge(
-                        label: item.status,
-                        color: item.statusColor,
-                      ),
+                      _StatusBadge(label: item.status, color: item.statusColor),
                     ],
                   ),
                   Row(
@@ -185,26 +184,20 @@ class _HistoryItem extends StatelessWidget {
                   _hGap5,
                   isCompany
                       ? Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        item.dateTime,
-                        style: Poppins(
-                          fontSize: 12,
-                          color: grey,
-                        ),
-                      ),
-                      if (item.showRating)
-                        _RatingStars(rating: item.rating),
-                    ],
-                  )
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              item.dateTime,
+                              style: Poppins(fontSize: 12, color: grey),
+                            ),
+                            if (item.showRating)
+                              _RatingStars(rating: item.rating),
+                          ],
+                        )
                       : Text(
-                    item.dateTime,
-                    style: Poppins(
-                      fontSize: 12,
-                      color: grey,
-                    ),
-                  ),
+                          item.dateTime,
+                          style: Poppins(fontSize: 12, color: grey),
+                        ),
                 ],
               ),
             ),
@@ -216,10 +209,7 @@ class _HistoryItem extends StatelessWidget {
 }
 
 class _StatusBadge extends StatelessWidget {
-  const _StatusBadge({
-    required this.label,
-    required this.color,
-  });
+  const _StatusBadge({required this.label, required this.color});
 
   final String label;
   final Color color;
@@ -232,13 +222,7 @@ class _StatusBadge extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
         color: color,
       ),
-      child: Text(
-        label,
-        style: Poppins(
-          fontSize: 12,
-          color: white,
-        ),
-      ),
+      child: Text(label, style: Poppins(fontSize: 12, color: white)),
     );
   }
 }

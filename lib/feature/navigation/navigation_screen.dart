@@ -132,15 +132,12 @@ class _NavItem extends StatelessWidget {
         child: Center(
           child: Row(
             mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment:
-            isActive ? MainAxisAlignment.start : MainAxisAlignment.center,
+            mainAxisAlignment: isActive
+                ? MainAxisAlignment.start
+                : MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Icon(
-                icon,
-                size: 22,
-                color: isActive ? orange : white,
-              ),
+              Icon(icon, size: 22, color: isActive ? orange : white),
               AnimatedSwitcher(
                 duration: const Duration(milliseconds: 180),
                 transitionBuilder: (child, animation) {
@@ -156,23 +153,21 @@ class _NavItem extends StatelessWidget {
                 },
                 child: isActive
                     ? Padding(
-                  key: ValueKey(label),
-                  padding: const EdgeInsets.only(left: 8, top: 15),
-                  child: Text(
-                    label,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    textAlign: TextAlign.center,
-                    style: Poppins(
-                      fontSize: 11,
-                      color: orange,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                )
-                    : const SizedBox.shrink(
-                  key: ValueKey('empty'),
-                ),
+                        key: ValueKey(label),
+                        padding: const EdgeInsets.only(left: 8, top: 15),
+                        child: Text(
+                          label,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          textAlign: TextAlign.center,
+                          style: Poppins(
+                            fontSize: 11,
+                            color: orange,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      )
+                    : const SizedBox.shrink(key: ValueKey('empty')),
               ),
             ],
           ),

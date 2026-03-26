@@ -42,6 +42,8 @@ part 'utils/core/dashed_border.dart';
 
 part 'widgets/style_text.dart';
 
+part 'widgets/show_dialog.dart';
+
 part 'widgets/loader.dart';
 
 part 'widgets/button.dart';
@@ -139,4 +141,13 @@ part 'feature/vacancy/sort/sort_controller.dart';
 part 'feature/vacancy/sort/sort_screen.dart';
 
 part 'feature/vacancy_detail/vacancy_detail_controller.dart';
+
 part 'feature/vacancy_detail/vacancy_detail_screen.dart';
+
+part 'feature/update_account/update_account_controller.dart';
+
+part 'feature/update_account/update_account_screen.dart';
+
+part 'feature/update_document/update_document_controller.dart';
+
+part 'feature/update_document/update_document_screen.dart';

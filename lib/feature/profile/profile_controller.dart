@@ -28,12 +28,24 @@ class ProfileController extends GetxController {
             ProfileMenuData(
               title: 'Document',
               subtitle: 'One step closer to the next big opportunity.',
-              onTap: () {},
+              onTap: () {
+                Get.to(() => UpdateDocument(role: role));
+              },
             ),
             ProfileMenuData(
               title: 'Log Out',
               subtitle: 'Go out first, then come back with a fresh mindset.',
-              onTap: () {},
+              onTap: () {
+                showCusDialog(
+                  title: 'Log Out',
+                  content: 'Are you sure you want to log out from your account?',
+                  confirmText: 'Yes, Logout',
+                  cancelText: 'Cancel',
+                  onConfirm: () {
+                    Get.offAll(SignIn());
+                  },
+                );
+              },
             ),
           ],
         )
@@ -55,12 +67,24 @@ class ProfileController extends GetxController {
             ProfileMenuData(
               title: 'Document',
               subtitle: 'One step closer to the next big opportunity.',
-              onTap: () {},
+              onTap: () {
+                Get.to(() => UpdateDocument(role: role));
+              },
             ),
             ProfileMenuData(
               title: 'Log Out',
               subtitle: 'Go out first, then come back with a fresh mindset.',
-              onTap: () {},
+              onTap: () {
+                showCusDialog(
+                  title: 'Log Out',
+                  content: 'Are you sure you want to log out from your account?',
+                  confirmText: 'Yes, Logout',
+                  cancelText: 'Cancel',
+                  onConfirm: () {
+                    Get.offAll(SignIn());
+                  },
+                );
+              },
             ),
           ],
         );

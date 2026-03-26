@@ -38,7 +38,7 @@ class _LabelValueState extends State<_LabelValue> {
             ),
             _wGap15,
             SizedBox(
-              width: 140,
+              width: Platform.isIOS ? 138 : 140,
               child: Text(
                 widget.value,
                 style: Poppins(color: black, fontSize: 13),
